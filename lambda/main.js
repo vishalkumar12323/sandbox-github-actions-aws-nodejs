@@ -1,4 +1,6 @@
-import "dotenv/config"
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 exports.handler = async () => {
     const VERSION = process.env.VERSION;
