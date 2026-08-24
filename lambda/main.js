@@ -3,7 +3,7 @@ exports.handler = async () => {
     return {
         statusCode: 200,
         body: JSON.stringify({
-            msg: "Hello AWS Lambda!",
+            msg: "Hello From AWS Lambda!",
             version: VERSION,
             timestamp: new Date().toISOString()
         })
