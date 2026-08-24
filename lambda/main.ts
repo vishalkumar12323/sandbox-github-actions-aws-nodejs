@@ -1,16 +1,12 @@
-
-
-export default function handler() {
+export function handler() {
     const VERSION = process.env.VERSION;
-    const response = {
-        msg: "Hello From AWS Lambda!",
-        version: VERSION,
-        node_version: 20,
-        timestamp: new Date().toISOString()
-    }
-
     return {
         statusCode: 200,
-        body: JSON.stringify(response),
+        body: JSON.stringify({
+            msg: "Hello From AWS Lambda 👋",
+            version: VERSION,
+            node_version: 20,
+            timestamp: new Date().toISOString()
+        }),
     };
 };
