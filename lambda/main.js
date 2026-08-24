@@ -5,6 +5,7 @@ exports.handler = async () => {
         body: JSON.stringify({
             msg: "Hello From AWS Lambda!",
             version: VERSION,
+            node_version: 20,
             timestamp: new Date().toISOString()
         })
     };
