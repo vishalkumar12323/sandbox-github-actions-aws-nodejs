@@ -17,6 +17,13 @@ jobs:
               uses: actions/setup-node@v2
               with:
                 node-version: 18
+            
+            - name: Cache Node.js Deps
+              id: cache
+              uses: actions/cache@v2
+              with:
+                path: ./node_modules
+                key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
 
             - name: Install CDK Deps
               working-directory: ./
