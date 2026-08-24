@@ -3,7 +3,7 @@ export function handler() {
     return {
         statusCode: 200,
         body: JSON.stringify({
-            msg: "Hello From AWS Lambda 👋",
+            msg: "Hello From AWS Lambda!",
             version: VERSION,
             node_version: 20,
             timestamp: new Date().toISOString()

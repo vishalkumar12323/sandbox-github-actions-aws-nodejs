@@ -12,7 +12,7 @@ export class SandboxGithubActionsAwsNodejsStack extends cdk.Stack {
     dotenv.config();
 
     const lambdaFunction = new lambdaNodejs.NodejsFunction(this, "LambdaFunction", {
-      runtime: lambda.Runtime.NODEJS_20_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       entry: path.join(__dirname, "../lambda/main.ts"),
       handler: "handler",
       environment: {
