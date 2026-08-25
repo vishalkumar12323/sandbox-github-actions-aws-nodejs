@@ -5,13 +5,27 @@ on:
     #   branches: main
     workflow_dispatch: 
 
+permissions: 
+  id-token: write
+  contents: read
+
 jobs:
     deploy:
         runs-on: ubuntu-latest
     
         steps:
             - name: Checkout Code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                role-to-assume: arn:aws:iam::848332098013:role/GitHubActionsAccess
+                aws-region: ap-south-1
+
+            - name: Verify AWS Identity
+              run: |
+                  aws-sts-get-caller-identity
 
             - name: Set up Node.js
               uses: actions/setup-node@v4
@@ -27,7 +41,3 @@ jobs:
             - name: Deploy CDK Stack
               working-directory: ./
               run: npx cdk deploy --require-approval never
-              env:
-                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                AWS_REGION: "ap-south-1"
